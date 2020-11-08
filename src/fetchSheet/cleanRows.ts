@@ -1,10 +1,10 @@
-import { SpreadsheetRow } from 'google-spreadsheet';
+import { GoogleSpreadsheetRow } from 'google-spreadsheet';
 import { ColumnTypes } from '../columnTypes.d';
-import { camelCase } from './shared/camelCase';
+import { camelCase } from 'lodash';
 import { filter } from './shared/filter';
 import { guessColumnsDataTypes } from './cleanRows/columnsDataTypes';
 
-export const cleanRows = (rows: SpreadsheetRow[]): SpreadsheetRow[] => {
+export const cleanRows = (rows: GoogleSpreadsheetRow[]) => {
   const columnTypes = guessColumnsDataTypes(rows);
   return rows.map(row =>
     Object.entries(row)

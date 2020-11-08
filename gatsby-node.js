@@ -3,11 +3,11 @@ const fetchSheet = require('./lib/fetchSheet.js').default;
 
 exports.sourceNodes = async (
   { actions },
-  { spreadsheetId, credentials, apiKey },
+  { spreadsheetId, includedWorksheets, credentials, apiKey },
 ) => {
   const { createNode } = actions;
   console.log('Fetching Google Sheet', fetchSheet, spreadsheetId);
-  const sheets = await fetchSheet(spreadsheetId, credentials, apiKey);
+  const sheets = await fetchSheet(spreadsheetId, includedWorksheets, credentials, apiKey);
   Object.entries(sheets).forEach(([name, data]) => {
     if (Array.isArray(data)) {
       data.forEach(row => {

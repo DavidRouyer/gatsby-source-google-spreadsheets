@@ -17,7 +17,9 @@
   ],
   "license": "MIT",
   "jest": {
-    "setupFiles": ["dotenv/config"],
+    "setupFiles": [
+      "dotenv/config"
+    ],
     "testEnvironment": "node",
     "roots": [
       "<rootDir>/src"
@@ -35,6 +37,7 @@
     "uuid": "^7.0.3"
   },
   "devDependencies": {
+    "@types/google-spreadsheet": "^3.0.2",
     "@types/jest": "^25.2.1",
     "@types/node": "^12.12.21",
     "@types/uuid": "^7.0.3",

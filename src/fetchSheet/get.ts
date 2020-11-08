@@ -1,8 +1,8 @@
-import { GoogleSpreadsheet } from 'google-spreadsheet';
+import { GoogleSpreadsheet, ServiceAccountCredentials } from 'google-spreadsheet';
 
 export async function getSpreadsheet(
   spreadsheetId: string,
-  credentials?: object,
+  credentials?: ServiceAccountCredentials,
   apiKey?: string,
 ): Promise<GoogleSpreadsheet> {
   const doc = new GoogleSpreadsheet(spreadsheetId);

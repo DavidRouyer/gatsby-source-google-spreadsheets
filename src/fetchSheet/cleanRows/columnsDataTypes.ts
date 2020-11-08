@@ -1,6 +1,6 @@
 import { GoogleSpreadsheetRow } from 'google-spreadsheet';
 import { ColumnTypes } from '../../columnTypes.d';
-import { camelCase } from '../shared/camelCase';
+import { camelCase } from 'lodash';
 import { filter } from '../shared/filter';
 
 const checkType = (val: any): string => {
