@@ -1,6 +1,6 @@
 import { GoogleSpreadsheetRow } from 'google-spreadsheet';
-import { ColumnTypes } from '../columnTypes.d';
 import { camelCase } from 'lodash';
+import { ColumnTypes } from '../columnTypes.d';
 import { filter } from './shared/filter';
 import { guessColumnsDataTypes } from './cleanRows/columnsDataTypes';
 

@@ -21,7 +21,7 @@ describe('guessing column data type based on all cells in column', () => {
         nulls: null,
         booleans: 'TRUE',
       },
-    ];
+    ] as any;
     const guessedTypes = guessColumnsDataTypes(rows);
     expect(guessedTypes.numbers).toBe('number');
     expect(guessedTypes.strings).toBe('string');
@@ -49,7 +49,7 @@ describe('guessing column data type based on all cells in column', () => {
         nulls: null,
         booleans: 'TRUE',
       },
-    ];
+    ] as any;
     const guessedTypes = guessColumnsDataTypes(rows);
     expect(guessedTypes.numbers).toBe('number');
     expect(guessedTypes.strings).toBe('string');
@@ -77,7 +77,7 @@ describe('guessing column data type based on all cells in column', () => {
         nulls: null,
         booleans: 'TRUE',
       },
-    ];
+    ] as any;
     const guessedTypes = guessColumnsDataTypes(rows);
     expect(guessedTypes.numbers).toBe('string');
     expect(guessedTypes.strings).toBe('string');

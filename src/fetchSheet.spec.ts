@@ -26,14 +26,14 @@ if (withPrivateKey == it.skip) {
 
 describe('fetching remote sheet from google', () => {
   withAPIKey('public sheets require API credential', async () => {
-    const sheet = await fetchSheet(SPREADSHEET_ID, undefined, GOOGLE_API_KEY);
+    const sheet = await fetchSheet(SPREADSHEET_ID, undefined, {}, undefined, GOOGLE_API_KEY);
     expect(sheet).toBeDefined();
     expect(sheet.id).toBeDefined();
     expect(sheet.inventory).toBeDefined();
   });
 
   it('No Auth throws exception', async () => {
-    await expect(fetchSheet(SPREADSHEET_ID)).rejects.toThrow();
+    await expect(fetchSheet(SPREADSHEET_ID, undefined, {})).rejects.toThrow();
   });
 
   withPrivateKey('private sheets require credential', async () => {
@@ -51,7 +51,7 @@ describe('fetching remote sheet from google', () => {
         CLIENT_EMAIL,
       )}`,
     };
-    const sheet = await fetchSheet(SPREADSHEET_ID, credentials);
+    const sheet = await fetchSheet(SPREADSHEET_ID, undefined, {}, credentials);
     expect(sheet).toBeDefined();
     expect(sheet.id).toBeDefined();
     expect(sheet.inventory).toBeDefined();
