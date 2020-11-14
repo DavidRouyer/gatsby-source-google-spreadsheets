@@ -1,14 +1,9 @@
-# Welcome to gatsby-source-google-spreadsheets 👋
-
-[![Version](https://img.shields.io/npm/v/gatsby-source-google-spreadsheets.svg)](https://www.npmjs.com/package/gatsby-source-google-spreadsheets)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/butlerx/gatsby-source-google-spreadsheets/blob/master/LICENSE)
-[![file structure: destiny](https://img.shields.io/badge/file%20structure-destiny-7a49ff?style=flat)](https://github.com/benawad/destiny)
-[![Twitter: cianbutlerx](https://img.shields.io/twitter/follow/cianbutlerx.svg?style=social)](https://twitter.com/cianbutlerx)
+# Welcome to @davidrouyer/gatsby-source-google-spreadsheets 👋
 
 > A source plugin for Gatsby that allows reading data from Google Sheets.
 
 Forked from
-[brandonmp/gatsby-source-google-sheets](https://github.com/brandonmp/gatsby-source-google-sheets)
+[butlerx/gatsby-source-google-spreadsheets](https://github.com/butlerx/gatsby-source-google-spreadsheets)
 to allow pulling the entire sheet as an objects and using public sheets
 
 Why go through the hassle of setting up a complicated headless CMS when Google
@@ -17,12 +12,10 @@ Sheets already has user permissions, revision history, and a powerful UI?
 This source plugin for [Gatsby JS](https://github.com/gatsbyjs/gatsby) will turn
 any Google Sheets worksheet into a GraphQL type for build-time consumption.
 
-### ✨ [Demo](https://beer.notthe.cloud)
-
 ## Install
 
 ```sh
-yarn add gatsby-source-google-spreadsheets
+yarn add @davidrouyer/gatsby-source-google-spreadsheets
 ```
 
 ## Usage
@@ -151,30 +144,9 @@ A few notes:
 4. If you get the error "Cannot read property 'worksheets' of undefined", make
    sure you have shared your spreadsheet with your service account user.
 
-## Author
-
-👤 **Cian Butler <butlerx@notthe.cloud>**
-
-- Website: https://cianbutler.ie
-- Twitter: [@cianbutlerx](https://twitter.com/cianbutlerx)
-- Github: [@butlerx](https://github.com/butlerx)
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
 Feel free to check
-[issues page](https://github.com/butlerx/gatsby-source-google-spreadsheets/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-## 📝 License
-
-Copyright © 2020
-[Cian Butler <butlerx@notthe.cloud>](https://github.com/butlerc).
-
-This project is
-[MIT](https://github.com/butlerx/gatsby-source-google-spreadsheets/blob/master/LICENSE)
-licensed.
+[issues page](https://github.com/DavidRouyer/gatsby-source-google-spreadsheets/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
