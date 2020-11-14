@@ -1,6 +1,6 @@
-import { JWT } from "google-auth-library";
-import * as fs from "fs";
-import * as https from "https";
+import { JWT } from 'google-auth-library';
+import * as fs from 'fs';
+import * as https from 'https';
 
 const GOOGLE_AUTH_SCOPES = [
   'https://www.googleapis.com/auth/drive',
@@ -51,13 +51,17 @@ export class GoogleDrive {
   getFile(fileId: string, filePath: string) {
     var file = fs.createWriteStream(filePath);
     try {
-      https.get(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
-        headers: {
-          'Authorization': this.getBearerToken()
-        }
-      }, (response) => {
-        response.pipe(file);
-      });
+      https.get(
+        `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
+        {
+          headers: {
+            Authorization: this.getBearerToken(),
+          },
+        },
+        response => {
+          response.pipe(file);
+        },
+      );
     } catch (e) {
       console.log('getFile error : ', e);
     }

@@ -1,4 +1,7 @@
-import { GoogleSpreadsheet, ServiceAccountCredentials } from 'google-spreadsheet';
+import {
+  GoogleSpreadsheet,
+  ServiceAccountCredentials,
+} from 'google-spreadsheet';
 
 export async function getSpreadsheet(
   spreadsheetId: string,

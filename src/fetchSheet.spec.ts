@@ -26,7 +26,13 @@ if (withPrivateKey == it.skip) {
 
 describe('fetching remote sheet from google', () => {
   withAPIKey('public sheets require API credential', async () => {
-    const sheet = await fetchSheet(SPREADSHEET_ID, undefined, {}, undefined, GOOGLE_API_KEY);
+    const sheet = await fetchSheet(
+      SPREADSHEET_ID,
+      undefined,
+      {},
+      undefined,
+      GOOGLE_API_KEY,
+    );
     expect(sheet).toBeDefined();
     expect(sheet.id).toBeDefined();
     expect(sheet.inventory).toBeDefined();
