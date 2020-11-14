@@ -1,5 +1,4 @@
 import { cleanRows } from './cleanRows';
-import { guessColumnsDataTypes } from './cleanRows/columnsDataTypes';
 
 describe('cleaning rows from GSheets response', () => {
   it("removes keys that don't correspond to column names", () => {
