@@ -12,7 +12,7 @@ exports.onCreateNode = async ({
   createNodeId,
   reporter
 },
-{ credentials, perRowDownloadInterval, perCellDownloadInterval }) => {
+{ credentials }) => {
   if (
     node.internal.type !== 'googleSheet' &&
     node.internal.type.startsWith('google') &&
@@ -23,37 +23,32 @@ exports.onCreateNode = async ({
 
     const filesCells = Object.entries(row).filter(([name, data]) => data && isString(data) && startsWith(data, 'https://drive.google.com/file/d/'));
 
-    setTimeout(async () => {
-      const drive = new GoogleDrive();
-      await drive.useServiceAccountAuth(credentials);
+    node.images___NODE = [];
 
-      node.images = [];
+    const drive = new GoogleDrive();
+    await drive.useServiceAccountAuth(credentials);
 
-      filesCells.forEach(async ([name, data], index) => {
-        setTimeout(async () => {
-          const fileId = data.replace('https://drive.google.com/file/d/', '').replace('/view?usp=sharing', '');
+    const filesNodes = await Promise.all(filesCells.map(async ([name, data]) => {
+        const fileId = data.replace('https://drive.google.com/file/d/', '').replace('/view?usp=sharing', '');
 
-          let fileNode;
-          try {
-            fileNode = await createRemoteFileNode({
-              url: encodeURI(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`),
-              parentNodeId: node.id,
-              createNode,
-              createNodeId,
-              cache,
-              store,
-              name: "google-drive-image-" + createNodeId(fileId),
-              httpHeaders: { Authorization: drive.getBearerToken() },
-              reporter,
-            })
-          } catch (e) {
-            console.log(e);
-          }
-    
-          node.images.push(fileNode.id);
-        }, index * perCellDownloadInterval);
-      });
-    }, node.index * perRowDownloadInterval);
+        const fileNode = await createRemoteFileNode({
+          url: encodeURI(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`),
+          parentNodeId: node.id,
+          createNode,
+          createNodeId,
+          cache,
+          store,
+          name: "google-drive-image-" + createNodeId(fileId),
+          httpHeaders: { Authorization: drive.getBearerToken() },
+          reporter,
+        })
+
+        return fileNode;
+    }));
+
+    node.images___NODE = filesNodes
+      .filter((fileNode) => fileNode)
+      .map((fileNode) => fileNode.id);
   }
 };
 
