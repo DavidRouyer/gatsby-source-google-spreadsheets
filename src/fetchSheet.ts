@@ -2,6 +2,7 @@ import {
   GoogleSpreadsheetWorksheet,
   ServiceAccountCredentials,
 } from 'google-spreadsheet';
+import { camelCase } from 'lodash';
 import { cleanRows } from './fetchSheet/cleanRows';
 import { getSpreadsheet } from './fetchSheet/get';
 import { hash } from './fetchSheet/hash';
@@ -30,7 +31,7 @@ export default async (
             : undefined,
         );
         return {
-          [worksheet.title]: cleanRows(rows).map((row, id) =>
+          [camelCase(worksheet.title)]: cleanRows(rows).map((row, id) =>
             Object.assign(row, {
               id: hash(`${worksheet.sheetId}-${id}`),
             }),
