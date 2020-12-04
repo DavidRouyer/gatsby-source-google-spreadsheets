@@ -23,7 +23,9 @@ exports.onCreateNode = async ({
 
     const filesCells = Object.entries(row).filter(([name, data]) => data && isString(data) && startsWith(data, 'https://drive.google.com/file/d/'));
 
-    node.images___NODE = [];
+    filesCells.forEach(([name, data]) => {
+      node[`${name}Image___NODE`] = null;
+    });
 
     const drive = new GoogleDrive();
     await drive.useServiceAccountAuth(credentials);
@@ -43,12 +45,15 @@ exports.onCreateNode = async ({
           reporter,
         })
 
-        return fileNode;
+        return { [name]: fileNode };
     }));
 
-    node.images___NODE = filesNodes
-      .filter((fileNode) => fileNode)
-      .map((fileNode) => fileNode.id);
+    filesNodes
+      .map((entry) => Object.entries(entry)[0])
+      .filter(([ name, data ]) => data)
+      .forEach(([ name, fileNode ]) => {
+        node[`${name}Image___NODE`] = fileNode.id;
+      });
   }
 };
 
