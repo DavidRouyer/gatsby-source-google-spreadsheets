@@ -1,6 +1,6 @@
 {
   "name": "@davidrouyer/gatsby-source-google-spreadsheets",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A source plugin for Gatsby that allows reading data from Google Sheets.",
   "main": "index.js",
   "scripts": {
